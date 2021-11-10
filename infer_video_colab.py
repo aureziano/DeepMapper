@@ -20,7 +20,7 @@ from models import UnetAdaptiveBins
 def get_video():
     from IPython.display import HTML
     from base64 import b64encode
-    video_path = "/content/DeepMapper/output_images/out.mp4"
+    video_path = "/content/Depth-Estimation/output_images/out.mp4"
 
     mp4 = open(video_path, 'rb').read()
     decoded_vid = "data:video/mp4;base64," + b64encode(mp4).decode()
