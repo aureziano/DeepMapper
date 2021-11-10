@@ -2,13 +2,13 @@
 import open3d as o3d
 import matplotlib.pyplot as plt
 from torch.nn import intrinsic
-import deep_mapper as dm
+import deep_mapper_colab as dm
 import cv2
 import numpy as np
 
 if __name__ == "__main__":
 
-    img = cv2.imread("test_imgs/input2.jpg")
+    img = cv2.imread("/content/test_imgs/input2.jpg")
     intrinsicMat = np.eye(3,dtype=np.float32)
     intrinsicMat[0,0]=427.11285934127466 # fx
     intrinsicMat[0,2]=340.29418100385436 # cx
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     img2 = cv2.undistort(img ,intrinsicMat,dists,None,intrinsicMat)
     plt.imshow(img2)
     plt.show()
-    cv2.imwrite("/tmp/input2.jpg",img2)
+    cv2.imwrite("/content/tmp/input2.jpg",img2)
     dm.initialize('kitti')
     dm.inferenceDepth(img2)
     color_raw = o3d.io.read_image("/content/Depth-Estimation/test_imgs/input2.jpg")
